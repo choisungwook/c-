@@ -15,7 +15,12 @@ public:
 		Lnext = NULL;
 		Rnext = NULL;
 	}
-	NODE() { }
+	NODE() 
+	{
+		_data = 0;
+		Lnext = NULL;
+		Rnext = NULL;
+	}
 	NODE* GetLNext() { return this->Lnext; }
 	NODE* GetRNext() { return this->Rnext; }
 	void SetLNext(NODE* NextNode) {	this->Lnext = NextNode;	}
