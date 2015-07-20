@@ -69,6 +69,20 @@ bool LGetNext(LinkedList *plist, DATA* pData)
 	return true;
 }
 
+DATA Lpop(LinkedList *plist)
+{	
+	NODE* delNode = plist->cur;
+	int delData = delNode->data;
+
+	plist->before->next = plist->cur->next;
+	plist->cur = plist->before;
+
+	free(delNode);
+	
+	return delData;
+	
+}
+
 int main()
 {
 	LinkedList A;
@@ -79,6 +93,16 @@ int main()
 	push(&A, 4);
 	push(&A, 1);
 
+	if (LGetFirst(&A, &data))
+	{
+		cout << data << " ";
+		while (LGetNext(&A, &data))
+			cout << data << " ";
+		cout << endl; 
+	}
+
+	Lpop(&A);
+	
 	if (LGetFirst(&A, &data))
 	{
 		cout << data << " ";
