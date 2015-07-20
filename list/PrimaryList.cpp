@@ -56,11 +56,27 @@ void Lprint(List *plist)
 		cout << cur->data << " ";
 		cur = cur->next;
 	}
+	cout << endl;
+}
+
+bool Lpop(List *plist, int *delData)
+{
+	if (plist->head->next == NULL)
+		return false;
+
+	NODE* delNode = plist->head->next;
+	*delData = delNode->data;
+
+	plist->head->next = delNode->next;
+	free(delNode);
+	return true;
+	
 }
 
 int main()
 {
 	List A;
+	DATA data;
 
 	Linit(&A);
 	Lpush(&A, 4);
@@ -69,6 +85,18 @@ int main()
 	Lpush(&A, 2);
 	Lpush(&A, 9);
 
+	Lprint(&A);	
+	Lpop(&A, &data);
+	Lprint(&A);
+	Lpop(&A, &data);
+	Lprint(&A);
+	Lpop(&A, &data);
+	Lprint(&A);
+	Lpop(&A, &data);
+	Lprint(&A);
+	Lpop(&A, &data);
+	Lprint(&A);
+	Lpop(&A, &data);
 	Lprint(&A);
 	return 0;
 }
